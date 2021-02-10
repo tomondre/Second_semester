@@ -10,14 +10,18 @@ public class TryLockCounter
 
   public void inc()
   {
-    if (lock.tryLock())
+    while (true)
     {
-      count++;
-      lock.unlock();
-    }
-    else
-    {
-      System.out.println("Lock was in use");
+      if (lock.tryLock())
+      {
+        count++;
+        lock.unlock();
+        return;
+      }
+      else
+      {
+        System.out.println("Lock was in use");
+      }
     }
   }
 
