@@ -1,6 +1,6 @@
-package first;
+package Ex2_1_1;
 
-public class Letters implements Runnable
+public class Numbers implements Runnable
 {
 
   @Override public void run()
@@ -9,7 +9,7 @@ public class Letters implements Runnable
     {
       for (int i = 0; i < 10; i++)
       {
-        System.out.println((char) (i + 97));
+        System.out.println(i);
       }
     }
   }

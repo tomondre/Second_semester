@@ -1,4 +1,4 @@
-package SecondPointSecond;
+package Ex2_2;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public class ListContainer
     list = new ArrayList<Integer>();
   }
 
-  public void add(int i)
+  public synchronized void add(int i)
   {
     list.add(i);
   }
@@ -20,6 +20,4 @@ public class ListContainer
   {
     return list.size();
   }
-
-
 }

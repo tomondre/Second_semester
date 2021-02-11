@@ -1,4 +1,4 @@
-package second;
+package Ex2_1_2;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -10,18 +10,19 @@ public class TryLockCounter
 
   public void inc()
   {
-    while (true)
+    while (lock.tryLock())
     {
-      if (lock.tryLock())
+      try
       {
-        count++;
-        lock.unlock();
-        return;
+        wait(10000);
       }
-      else
+      catch (InterruptedException | IllegalStateException e)
       {
-        System.out.println("Lock was in use");
+
       }
+      count++;
+      lock.unlock();
+      System.out.println("Lock was in use");
     }
   }
 

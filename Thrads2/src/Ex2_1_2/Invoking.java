@@ -1,4 +1,4 @@
-package second;
+package Ex2_1_2;
 
 public class Invoking implements Runnable
 {

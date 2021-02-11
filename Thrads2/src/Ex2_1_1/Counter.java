@@ -1,4 +1,4 @@
-package first;
+package Ex2_1_1;
 
 public class Counter
 {

@@ -1,9 +1,9 @@
-package second;
+package Ex2_1_2;
 
-public class Hello implements Runnable
+public class Hi implements Runnable
 {
   private int num;
-  public Hello(int num)
+  public Hi(int num)
   {
     this.num = num;
   }
@@ -12,7 +12,7 @@ public class Hello implements Runnable
     while (true){
       for (int i = 0; i < num; i++)
       {
-        System.out.println("hello");
+        System.out.println("hi");
       }
     }
   }

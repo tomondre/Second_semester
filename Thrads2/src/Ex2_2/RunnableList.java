@@ -1,4 +1,4 @@
-package SecondPointSecond;
+package Ex2_2;
 
 public class RunnableList implements Runnable
 {
@@ -14,15 +14,10 @@ public class RunnableList implements Runnable
   {
     for (int i = 0; i < 1000000; i++)
     {
-    add(i);
+      container.add(i);
     }
 
     System.out.println(container.length());
   }
 
-  public synchronized void add(int i)
-  {
-    container.add(i);
-
-  }
 }
