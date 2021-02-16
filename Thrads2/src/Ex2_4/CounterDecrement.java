@@ -21,7 +21,7 @@ public class CounterDecrement implements Runnable
       counter.decrement();
       try
       {
-        Thread.sleep(1);
+        Thread.sleep(1000);
       }
       catch (InterruptedException e) {}
     }

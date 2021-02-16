@@ -6,10 +6,9 @@ public class Start
   {
     Counter counter = new Counter(-50,50);
 
-    CounterIncrement inc = new CounterIncrement(counter, 20);
+    CounterIncrement inc = new CounterIncrement(counter, 100);
     CounterDecrement dec = new CounterDecrement(counter, 20);
-
-    CounterIncrement in = new CounterIncrement(counter, 20);
+    CounterIncrement in = new CounterIncrement(counter, 100);
     CounterDecrement de = new CounterDecrement(counter, 20);
 
     Thread t1 = new Thread(inc);

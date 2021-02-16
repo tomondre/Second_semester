@@ -46,7 +46,7 @@ public class Counter
     System.out.println(value + ": " + Thread.currentThread().getName());
   }
 
-  public long getValue()
+  public synchronized long getValue()
   {
     return value;
   }
