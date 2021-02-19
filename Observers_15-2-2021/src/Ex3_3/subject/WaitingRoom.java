@@ -18,7 +18,7 @@ public class WaitingRoom implements PropertyChangeSubject
 
   public void start()
   {
-    while (true)
+    while (propertyChangeSupport.getPropertyChangeListeners().length!=0)
     {
       counter++;
       try
@@ -32,6 +32,8 @@ public class WaitingRoom implements PropertyChangeSubject
       numberChanged();
     }
   }
+
+
 
   public void numberChanged()
   {

@@ -8,7 +8,7 @@ public class Main
   public static void main(String[] args)
   {
     WaitingRoom room = new WaitingRoom();
-    Patient[]  patients = new Patient[10];
+    Patient[]  patients = new Patient[3];
 
     for (int i = 0; i < patients.length; i++)
     {
