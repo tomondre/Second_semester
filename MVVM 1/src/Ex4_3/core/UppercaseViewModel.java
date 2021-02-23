@@ -1,4 +1,4 @@
-package Ex4_3.view;
+package Ex4_3.core;
 
 import Ex4_3.model.TextConverter;
 import javafx.beans.property.SimpleStringProperty;
@@ -26,7 +26,7 @@ public class UppercaseViewModel
       error.setValue("Invalid value");
       return;
     }
-    reply.setValue(tc.toUpperCase(requestProperty().get()));
+    reply.setValue(tc.toUpperCase(request.get()));
   }
 
   public StringProperty errorProperty()

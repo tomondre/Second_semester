@@ -1,4 +1,4 @@
-package Ex4_3.view.log;
+package Ex4_3.core;
 
 import Ex4_3.model.TextConverter;
 import javafx.collections.FXCollections;
@@ -8,16 +8,22 @@ import java.util.List;
 
 public class LogViewModel
 {
-  private TextConverter log;
+  private TextConverter model;
   private ObservableList<String> logs;
 
   public LogViewModel(TextConverter converter)
   {
-    log = converter;
-    logs = FXCollections.observableArrayList();;
+    model = converter;
+    logs = FXCollections.observableArrayList();
+  }
+
+  public void log()
+  {
+    logs.setAll(model.getLog());
   }
 
   public ObservableList<String> getLog(){
     return logs;
   }
+
 }

@@ -1,7 +1,6 @@
 package Ex4_3.core;
 
-import Ex4_3.view.UppercaseViewModel;
-import Ex4_3.view.log.LogViewModel;
+import Ex4_3.model.ModelFactory;
 
 public class ViewModelFactory
 {
@@ -27,11 +26,10 @@ public class ViewModelFactory
 
   public LogViewModel getLogVM()
   {
-    return logVM;
-  }
-
-  public LogViewModel logVM()
-  {
+    if (logVM == null)
+    {
+      logVM = new LogViewModel(mf.getTextConverter());
+    }
     return logVM;
   }
 

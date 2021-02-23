@@ -38,7 +38,7 @@ public class ViewHandler
       {
         FXMLLoader loader = new FXMLLoader();
         loader
-            .setLocation(getClass().getResource("../view/UppercaseView.fxml"));
+            .setLocation(getClass().getResource("../Ex5_1.view/UppercaseView.fxml"));
         Parent root = loader.load();
 
         UppercaseViewController ctrl = loader.getController();

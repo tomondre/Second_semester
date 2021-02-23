@@ -1,4 +1,4 @@
-package Ex4_2.core;
+package Ex4_2.model;
 
 import Ex4_2.model.TextConvertModel;
 import Ex4_2.model.TextConverter;

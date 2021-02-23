@@ -1,6 +1,5 @@
 package Ex4_2.view;
 
-import Ex4_3.view.log.LogViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

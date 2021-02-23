@@ -6,5 +6,6 @@ import java.util.List;
 public interface TextConverter
 {
   String toUpperCase(String text);
-  List<String> getLog();
+  void addLog(String log);
+  ArrayList<String> getLog();
 }

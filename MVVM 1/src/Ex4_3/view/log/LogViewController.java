@@ -1,18 +1,32 @@
 package Ex4_3.view.log;
 
-import Ex4_3.core.ViewHandler;
+import Ex4_3.core.LogViewModel;
+import Ex4_3.view.ViewHandler;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+
+import java.io.IOException;
 
 public class LogViewController
 {
-private ListView<String> logList;
-private LogViewModel logVM;
-private ViewHandler viewHandler;
+  @FXML private Button returnBackButton;
+  @FXML private ListView<String> logField;
 
-public void init()
-{
+  private LogViewModel logVM;
+  private ViewHandler viewHandler;
 
-  logList.setItems(logVM.getLog());
+  public void init(ViewHandler viewHandler, LogViewModel logVM)
+  {
+    this.logVM = logVM;
+    this.viewHandler = viewHandler;
+    logField.setItems(logVM.getLog());
+    this.logVM.log();
+  }
 
-}
+  public void returnBack(ActionEvent actionEvent) throws IOException
+  {
+    viewHandler.openView("");
+  }
 }

@@ -13,9 +13,13 @@ public class TextConvertModel implements TextConverter
     return text.toUpperCase();
   }
 
-  @Override public List<String> getLog()
+  @Override public void addLog(String log)
+  {
+    this.log.add(log);
+  }
+
+  @Override public ArrayList<String> getLog()
   {
     return log;
   }
-
 }

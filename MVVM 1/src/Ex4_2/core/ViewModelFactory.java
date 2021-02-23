@@ -1,5 +1,6 @@
 package Ex4_2.core;
 
+import Ex4_2.model.ModelFactory;
 import Ex4_2.view.UppercaseViewModel;
 
 public class ViewModelFactory

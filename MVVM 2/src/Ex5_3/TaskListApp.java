@@ -1,14 +1,13 @@
-package Ex4_2;
+package Ex5_3;
 
-import Ex4_2.model.ModelFactory;
-import Ex4_2.core.ViewHandler;
-import Ex4_2.core.ViewModelFactory;
+import Ex5_3.core.ModelFactory;
+import Ex5_3.core.ViewHandler;
+import Ex5_3.core.ViewModelFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class UppercaseApp extends Application
+public class TaskListApp extends Application
 {
-
   @Override public void start(Stage stage) throws Exception
   {
     ModelFactory mf = new ModelFactory();
