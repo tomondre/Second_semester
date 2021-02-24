@@ -12,11 +12,12 @@ public class AllTaskVM implements PropertyChangeListener
 {
   private ObservableList<Task> tasks;
   private TaskModel model;
+
   public AllTaskVM(TaskModel model)
   {
     this.model = model;
     tasks = FXCollections.observableArrayList();
-
+    this.model.addPropertyChangeListener(this);
   }
 
   public ObservableList<Task> getTaskList()

@@ -15,17 +15,17 @@ public class Task
 
   public String getOwner()
   {
-    return owner;
+    return this.owner;
   }
 
   public String getDescription()
   {
-    return description;
+    return this.description;
   }
 
   public String getTimeCreated()
   {
-    return timeCreated;
+    return this.timeCreated;
   }
 
   @Override public String toString()

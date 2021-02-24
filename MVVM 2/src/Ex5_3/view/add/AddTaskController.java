@@ -32,6 +32,8 @@ public class AddTaskController
 
   public void onBackButton(ActionEvent actionEvent) throws IOException
   {
+viewModel.reset();
     handler.openAllTaskView();
   }
+
 }

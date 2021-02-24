@@ -19,7 +19,7 @@ public class AddTaskVM
 
   public void addNewTask()
   {
-    model.addTask(creator.toString(), description.toString());
+    model.addTask(creator.get(), description.get());
   }
 
   public StringProperty creatorProperty()
@@ -30,5 +30,11 @@ public class AddTaskVM
   public StringProperty descriptionProperty()
   {
     return description;
+  }
+
+  public void reset()
+  {
+    creator.set("");
+    description.set("");
   }
 }

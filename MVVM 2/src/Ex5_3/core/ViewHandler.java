@@ -2,6 +2,7 @@ package Ex5_3.core;
 
 import Ex5_3.view.add.AddTaskController;
 import Ex5_3.view.all.AllTaskController;
+import Ex5_3.view.remove.NextTaskController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,9 +18,8 @@ public class ViewHandler
   private Stage stage;
   private Scene addTaskViewScene;
   private Scene allTaskViewScene;
-  private Scene removeTaskViewScene;
+  private Scene nextTaskViewScene;
   private ViewModelFactory vmf;
-  private Scene scene;
 
   public ViewHandler(ViewModelFactory vmf)
   {
@@ -28,21 +28,31 @@ public class ViewHandler
 
   public void start() throws IOException
   {
-    openAddTaskView();
+    stage = new Stage();
+    openAllTaskView();
   }
 
   public void openAddTaskView() throws IOException
   {
     openView("AddTaskView");
   }
+
   public void openAllTaskView() throws IOException
   {
-    openView(allTasksViewFXMLname);
+    if (allTaskViewScene == null)
+    {
+      openView(allTasksViewFXMLname);
+      return;
+    }
+    stage.close();
+    stage.setScene(addTaskViewScene);
   }
+
   public void openNextTaskView() throws IOException
   {
     openView("NextTaskView");
   }
+
   private void openView(String view) throws IOException
   {
     String temp = "";
@@ -50,6 +60,7 @@ public class ViewHandler
     if (view.equals("AddTaskView"))
     {
       temp = "add";
+
     }
     else if (view.equals(allTasksViewFXMLname))
     {
@@ -59,13 +70,15 @@ public class ViewHandler
     {
       temp = "remove";
     }
-    loader.setLocation(getClass()
-        .getResource("../view/" + temp + "/" + view + ".fxml"));
+    loader.setLocation(
+        getClass().getResource("../view/" + temp + "/" + view + ".fxml"));
 
     Parent root = null;
 
     root = loader.load();
+
     stage = new Stage();
+
     if (view.equals("AddTaskView"))
     {
       AddTaskController addTaskController = loader.getController();
@@ -73,16 +86,25 @@ public class ViewHandler
       addTaskViewScene = new Scene(root);
       stage.setScene(addTaskViewScene);
     }
+
     else if (view.equals(allTasksViewFXMLname))
     {
       AllTaskController allTaskController = loader.getController();
       allTaskController.init(this, vmf.getAllTaskVM());
-      allTaskViewScene = new Scene(root);
+      if (allTaskViewScene == null)
+      {
+        allTaskViewScene = new Scene(root);
+      }
       stage.setScene(allTaskViewScene);
     }
+
     else
     {
-      removeTaskViewScene = new Scene(root);
+      NextTaskController nextTaskController = loader.getController();
+      nextTaskController.init(this, vmf.getNextTaskVM());
+
+      nextTaskViewScene = new Scene(root);
+      stage.setScene(nextTaskViewScene);
     }
     stage.show();
   }

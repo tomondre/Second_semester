@@ -26,7 +26,7 @@ public class TaskModelManager implements TaskModel
 
   @Override public void addTask(String owner, String description)
   {
-    Task taskToAdd = new Task(calcTimeStamp(), owner, description);
+    Task taskToAdd = new Task(owner, description, calcTimeStamp());
     tasks.add(taskToAdd);
     pcs.firePropertyChange("TaskAdded", "-1", 0);
     System.out.println(taskToAdd);
@@ -34,6 +34,10 @@ public class TaskModelManager implements TaskModel
 
   @Override public Task getNextTask()
   {
+    if (tasks.size() == 0)
+    {
+      return null;
+    }
     Task temp = tasks.get(0);
     tasks.remove(0);
     pcs.firePropertyChange("TaskGotten", "-1", 0);

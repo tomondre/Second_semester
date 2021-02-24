@@ -1,6 +1,7 @@
 package Ex5_3.view.all;
 
 import Ex5_3.core.ViewHandler;
+import Ex5_3.model.Task;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -13,10 +14,10 @@ public class AllTaskController
 {
   public Button nextTaskButton;
   public Button addButton;
-  public TableView table;
-  public TableColumn descriptionColumn;
-  public TableColumn creatorColumn;
-  public TableColumn dateColumn;
+  public TableView<Task> table;
+  public TableColumn<String, Task> descriptionColumn;
+  public TableColumn<String, Task> creatorColumn;
+  public TableColumn<String, Task> dateColumn;
 
   private AllTaskVM viewModel;
   private ViewHandler viewHandler;
@@ -25,18 +26,20 @@ public class AllTaskController
   {
     this.viewModel = allTaskVM;
     this.viewHandler = viewHandler;
-    creatorColumn.setCellFactory(new PropertyValueFactory<>("owner"));
-    descriptionColumn.setCellFactory(new PropertyValueFactory<>("description"));
-    dateColumn.setCellFactory(new PropertyValueFactory<>("dateCreated"));
+    creatorColumn.setCellValueFactory(new PropertyValueFactory<>("owner"));
+    descriptionColumn
+        .setCellValueFactory(new PropertyValueFactory<>("description"));
+    dateColumn.setCellValueFactory(new PropertyValueFactory<>("timeCreated"));
+    table.setItems(viewModel.getTaskList());
   }
 
   public void onAddButton(ActionEvent actionEvent) throws IOException
   {
-viewHandler.openAddTaskView();
+    viewHandler.openAddTaskView();
   }
 
-  public void onNextTask(ActionEvent actionEvent)
+  public void onNextTask(ActionEvent actionEvent) throws IOException
   {
-
+viewHandler.openNextTaskView();
   }
 }
