@@ -28,9 +28,9 @@ public class DoorVM implements PropertyChangeListener
   public void pressDoorButton()
   {
     model.pressDoorButton();
-    Platform.runLater(() -> {
+
       doorStatus.set(model.getState());
-    });
+
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)

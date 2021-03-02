@@ -6,7 +6,7 @@ public class CloseDoorState implements DoorState
 {
   @Override public void pressButton(Door door)
   {
- door.setDoorState(new OpeningDoorState(door));
+    door.setDoorState(new OpeningDoorState(door));
   }
 
   @Override public String getState()

@@ -5,6 +5,7 @@ import Ex6_2.Radiator;
 public class Power3State implements RadiatorState
 {
   private static int POWER = 3;
+  Thread thread;
 
   public Power3State(Radiator radiator)
   {
@@ -12,17 +13,14 @@ public class Power3State implements RadiatorState
       try
       {
         Thread.sleep(10000);
+        turnDown(radiator);
       }
       catch (InterruptedException e)
       {
         e.printStackTrace();
       }
-      finally
-      {
-        turnDown(radiator);
-      }
     };
-    Thread thread = new Thread(runnable);
+    thread = new Thread(runnable);
     thread.setDaemon(true);
     thread.start();
   }
@@ -34,6 +32,7 @@ public class Power3State implements RadiatorState
 
   @Override public void turnDown(Radiator radiator)
   {
+    thread.interrupt();
     radiator.setPowerState(new Power2State());
   }
 
