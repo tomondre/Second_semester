@@ -1,14 +1,11 @@
 package model;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class Thermometer implements PropertyChangeSubject
+public class Thermometer implements Runnable
 {
-  private PropertyChangeSupport support;
-
-  private Thread thread;
+  private final int minOutdoorTemperature = -10;
+  private final int maxOutdoorTemperature = 10;
 
   private int thermometerID;
   private int heaterDistance;
@@ -25,50 +22,47 @@ public class Thermometer implements PropertyChangeSubject
     log = new ThermometerLog();
     this.externalThermometer = externalThermometer;
 
-    run();
   }
 
   public void run()
   {
-    Runnable runnable = () -> {
-      int s;
-      while (true)
+    int s;
+    while (true)
+    {
+      s = (int) (Math.random() * 5 + 4);
+      try
       {
-        s = (int) (Math.random() * 5 + 4);
-        try
+        Thread.sleep(s * 1000);
+
+        //model.Thermometer for external thermometer
+        //Adds temperature to history and fire an Event with thermometer identifier and new value
+        if (externalThermometer == null)
         {
-          Thread.sleep(s);
-
-          //Thermometer for external thermometer
-          //Adds temperature to history and fire an Event with thermometer identifier and new value
-          if (externalThermometer == null)
-          {
-            double temp = externalTemperature(log.getLastValue(), 10, 20);
-            log.add(temp);
-            support.firePropertyChange("ExternalThermometerChange",
-                thermometerID, temp);
-          }
-
-          //Method for internal thermometer
-          //Adds temperature to history and fire an Event with thermometer identifier and new value
-          else
-          {
-            double temp = temperature(log.getLastValue(),
-                system.getHeatingPower(), heaterDistance,
-                externalThermometer.getLastValue(), s);
-
-            log.add(temp);
-            support.firePropertyChange("InternalThermometerChange",
-                thermometerID, temp);
-          }
+          double temp = externalTemperature(log.getLastValue(),
+              minOutdoorTemperature, maxOutdoorTemperature);
+          log.add(temp);
+          system.firePropertyChange("ExternalThermometerChange", thermometerID,
+              temp);
         }
-        catch (InterruptedException e)
+
+        //Method for internal thermometer
+        //Adds temperature to history and fire an Event with thermometer identifier and new value
+        else
         {
+          double temp = temperature(log.getLastValue(),
+              system.getHeatingPower(), heaterDistance,
+              externalThermometer.getLastValue(), s);
+
+          log.add(temp);
+          system.firePropertyChange("InternalThermometerChange", thermometerID,
+              temp);
         }
       }
-    };
-    thread = new Thread(runnable);
-    thread.start();
+      catch (InterruptedException e)
+      {
+      }
+    }
+
   }
 
   public double getLastValue()
@@ -120,11 +114,6 @@ public class Thermometer implements PropertyChangeSubject
     int sign = Math.random() * (left + right) > left ? 1 : -1;
     t0 += sign * Math.random();
     return t0;
-  }
-
-  @Override public void addListener(PropertyChangeListener listener)
-  {
-    support.addPropertyChangeListener(listener);
   }
 
   public ArrayList<Double> getHistory()

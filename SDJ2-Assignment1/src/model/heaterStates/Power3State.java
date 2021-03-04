@@ -4,6 +4,9 @@ import model.Heater;
 
 public class Power3State implements HeaterState
 {
+  //Configuring waiting time
+  private final int timerValue = 10000;
+
   private final int POWER = 3;
   private Thread thread;
 
@@ -12,7 +15,7 @@ public class Power3State implements HeaterState
     Runnable runnable = () -> {
       try
       {
-        Thread.sleep(5000);
+        Thread.sleep(timerValue);
         heater.setState(new Power2State());
       }
       catch (InterruptedException e)
@@ -21,6 +24,7 @@ public class Power3State implements HeaterState
       }
     };
     thread = new Thread(runnable);
+    thread.setDaemon(true);
     thread.start();
   }
 

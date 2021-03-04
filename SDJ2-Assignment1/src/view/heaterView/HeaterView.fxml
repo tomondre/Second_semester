@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="136.0" prefWidth="108.0"
+            xmlns="http://javafx.com/javafx/15.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.heaterView.HeaterViewController">
+    <children>
+        <VBox prefHeight="288.0" prefWidth="208.0">
+            <children>
+                <Label text="Radiator Control">
+                    <VBox.margin>
+                        <Insets left="50.0" right="40.0" top="40.0"/>
+                    </VBox.margin>
+                </Label>
+                <HBox prefHeight="70.0" prefWidth="252.0">
+                    <children>
+                        <Label text="Current Level:">
+                            <HBox.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0"
+                                        top="20.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label fx:id="radiatorLevelLabel" text="Label">
+                            <HBox.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0"
+                                        top="20.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+                <Button fx:id="turnUpButton" mnemonicParsing="false"
+                        onAction="#onTurnUpPressed" text="Turn up ">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="60.0" right="60.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="turnDownButton" mnemonicParsing="false"
+                        onAction="#onTurnDownPressed" text="Turn Down">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="55.0" right="30.0"
+                                top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="backButton" mnemonicParsing="false"
+                        onAction="#onBackButton" text="Back">
+                    <VBox.margin>
+                        <Insets left="65.0" top="30.0"/>
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

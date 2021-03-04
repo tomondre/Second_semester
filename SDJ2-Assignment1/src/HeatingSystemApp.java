@@ -1,8 +1,8 @@
 import core.ModelFactory;
+import core.ViewHandler;
 import core.ViewModelFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.Thermometer;
 
 public class HeatingSystemApp extends Application
 {
@@ -13,5 +13,6 @@ public class HeatingSystemApp extends Application
     ViewModelFactory vmf = new ViewModelFactory(mf);
     ViewHandler vh = new ViewHandler(vmf);
 
+    vh.start();
   }
 }
