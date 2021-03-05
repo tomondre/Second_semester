@@ -5,7 +5,7 @@ import model.Model;
 
 public class ModelFactory
 {
-  private Model model;
+  private final Model model;
 
   public ModelFactory(){
     model = new HeatingSystem();

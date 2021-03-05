@@ -6,7 +6,7 @@ import model.heaterStates.Power0State;
 public class Heater
 {
   private HeaterState state = new Power0State();
-private HeatingSystem system;
+private final HeatingSystem system;
 
   public Heater(HeatingSystem system)
   {

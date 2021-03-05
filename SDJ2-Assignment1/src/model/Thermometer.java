@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Thermometer implements Runnable
 {
-  private final int minOutdoorTemperature = -10;
-  private final int maxOutdoorTemperature = 10;
+  private final int minOutdoorTemperature = -20;
+  private final int maxOutdoorTemperature = 20;
 
-  private int thermometerID;
-  private int heaterDistance;
-  private HeatingSystem system;
-  private ThermometerLog log;
-  private Thermometer externalThermometer;
+  private final int thermometerID;
+  private final int heaterDistance;
+  private final HeatingSystem system;
+  private final ThermometerLog log;
+  private final Thermometer externalThermometer;
 
   public Thermometer(int thermNum, HeatingSystem system, int heaterDistance,
       Thermometer externalThermometer)
@@ -21,7 +21,6 @@ public class Thermometer implements Runnable
     this.heaterDistance = heaterDistance;
     log = new ThermometerLog();
     this.externalThermometer = externalThermometer;
-
   }
 
   public void run()
@@ -33,36 +32,41 @@ public class Thermometer implements Runnable
       try
       {
         Thread.sleep(s * 1000);
+        double temp;
 
         //model.Thermometer for external thermometer
         //Adds temperature to history and fire an Event with thermometer identifier and new value
         if (externalThermometer == null)
         {
-          double temp = externalTemperature(log.getLastValue(),
-              minOutdoorTemperature, maxOutdoorTemperature);
-          log.add(temp);
-          system.firePropertyChange("ExternalThermometerChange", thermometerID,
-              temp);
+          temp = externalTemperature(log.getLastValue(), minOutdoorTemperature,
+               maxOutdoorTemperature);
         }
 
         //Method for internal thermometer
         //Adds temperature to history and fire an Event with thermometer identifier and new value
         else
         {
-          double temp = temperature(log.getLastValue(),
-              system.getHeatingPower(), heaterDistance,
-              externalThermometer.getLastValue(), s);
+          temp = temperature(log.getLastValue(), system.getHeatingPower(),
+              heaterDistance, externalThermometer.getLastValue(), s);
 
-          log.add(temp);
-          system.firePropertyChange("InternalThermometerChange", thermometerID,
-              temp);
+          if (temp > system.getMaxCriticalValue())
+          {
+            system.firePropertyChange("ErrorMax", -1, 0);
+          }
+          if (temp < system.getMinCriticalValue())
+          {
+            system.firePropertyChange("ErrorMin", -1, 0);
+          }
         }
+
+        log.add(temp);
+        system.firePropertyChange("ThermometerChange", thermometerID, temp);
+
       }
       catch (InterruptedException e)
       {
       }
     }
-
   }
 
   public double getLastValue()

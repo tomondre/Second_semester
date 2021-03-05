@@ -10,8 +10,8 @@ import java.beans.PropertyChangeListener;
 
 public class HeaterViewModel implements PropertyChangeListener
 {
-  private Model model;
-  private StringProperty heaterLevelProperty;
+  private final Model model;
+  private final StringProperty heaterLevelProperty;
 
   public HeaterViewModel(Model model)
   {

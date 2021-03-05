@@ -1,10 +1,13 @@
 package view.graphView;
 
 import core.ViewHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -26,11 +29,12 @@ public class GraphViewController
     this.handler = handler;
     this.viewModel = viewModel;
 
-    xAxis = new CategoryAxis();
-    yAxis = new NumberAxis();
-    chart = new LineChart<>(xAxis, yAxis);
-    chart.setData(viewModel.getThermHistory());
-    header.textProperty().bind(viewModel.getHeading());
+    ObservableList<XYChart.Series<String, Number>> list = viewModel.getThermHistory();
+    list.get(0).setName("Outdoor thermometer");
+    list.get(1).setName("Indoor thermometer 1");
+    list.get(2).setName("Indoor thermometer 2");
+
+    chart.setData(list);
   }
 
   public void onBackButton(ActionEvent actionEvent) throws IOException

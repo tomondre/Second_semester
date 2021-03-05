@@ -6,12 +6,15 @@ import java.util.ArrayList;
 
 public class HeatingSystem implements Model
 {
-  private Heater heater;
-  private PropertyChangeSupport propertyChangeSupport;
+  private double maxCriticalValue = 30;
+  private double minCriticalValue = 10;
+
+  private final Heater heater;
+  private final PropertyChangeSupport propertyChangeSupport;
 
   //Internal thermometers in list has externalThermometer field set to null.
-  private Thermometer[] thermometers;
-  private Thread[] threads;
+  private final Thermometer[] thermometers;
+  private final Thread[] threads;
 
   public HeatingSystem()
   {
@@ -76,16 +79,61 @@ public class HeatingSystem implements Model
     heater.turnDown();
   }
 
+  //Checks if ant thermometer is outside of pre defined critical fields
+  @Override public boolean outsideCriticalValues()
+  {
+    for (int i = 1; i < thermometers.length; i++)
+    {
+      double thermValue = thermometers[i].getLastValue();
+
+      if (thermValue > maxCriticalValue || thermValue < minCriticalValue)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @Override public void setHighCriticalValue(Double value)
+  {
+    maxCriticalValue = value;
+  }
+
+  @Override public void setLowCriticalValue(Double value)
+  {
+    minCriticalValue = value;
+  }
+
+  @Override public double getHighCriticalValue()
+  {
+    return maxCriticalValue;
+  }
+
+  @Override public double getLowCriticalValue()
+  {
+    return minCriticalValue;
+  }
+
   @Override public void addListener(PropertyChangeListener listener)
   {
     propertyChangeSupport.addPropertyChangeListener(listener);
   }
 
-  @Override public void firePropertyChange(String propertyName, int thermometerID,
-      double newValue)
+  @Override public void firePropertyChange(String propertyName,
+      int thermometerID, double newValue)
   {
     propertyChangeSupport
         .firePropertyChange(propertyName, thermometerID, newValue);
+  }
+
+  public double getMaxCriticalValue()
+  {
+    return maxCriticalValue;
+  }
+
+  public double getMinCriticalValue()
+  {
+    return minCriticalValue;
   }
 }
 

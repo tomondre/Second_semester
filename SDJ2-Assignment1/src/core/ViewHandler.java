@@ -13,13 +13,13 @@ import java.io.IOException;
 
 public class ViewHandler
 {
-  private ViewModelFactory vmf;
+  private final ViewModelFactory vmf;
   private Scene thermometerScene;
   private Scene heaterScene;
   private Scene historyScene;
   private Scene graphScene;
 
-  private Stage stage;
+  private final Stage stage;
   private FXMLLoader loader;
   private Parent root;
 
@@ -105,18 +105,20 @@ public class ViewHandler
         break;
 
       case "Graph":
+        if (graphScene == null)
+        {
+          loadLocation(viewToOpen);
+          GraphViewController view = loader.getController();
+          view.init(this, vmf.getGraphViewModel());
+          stage.setTitle("Graph");
 
-        loadLocation(viewToOpen);
-        GraphViewController view = loader.getController();
-        view.init(this, vmf.getGraphViewModel());
-        stage.setTitle("Graph");
-
-        graphScene = new Scene(root);
-
-        vmf.getGraphViewModel().setIndex(selectedThermID);
+          graphScene = new Scene(root);
+        }
+        vmf.getGraphViewModel().setSelectedItemID(selectedThermID);
         stage.setScene(graphScene);
         break;
     }
+    stage.setResizable(false);
     stage.show();
   }
 

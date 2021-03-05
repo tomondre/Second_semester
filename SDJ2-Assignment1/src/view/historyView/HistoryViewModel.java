@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public class HistoryViewModel implements PropertyChangeListener
 {
 
-  private StringProperty heading;
+  private final StringProperty heading;
 
   private int selectedThermID;
-  private Model model;
-  private ObservableList<String> selectedThermHistory;
+  private final Model model;
+  private final ObservableList<String> selectedThermHistory;
 
   public HistoryViewModel(Model model)
   {

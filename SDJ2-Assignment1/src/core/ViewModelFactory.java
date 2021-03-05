@@ -7,11 +7,11 @@ import view.thermometerView.ThermometerViewModel;
 
 public class ViewModelFactory
 {
-  private ModelFactory model;
-  private ThermometerViewModel thermometerVM;
-  private HeaterViewModel heaterVM;
-  private HistoryViewModel historyVM;
-  private GraphViewModel graphViewModel;
+  private final ModelFactory model;
+  private final ThermometerViewModel thermometerVM;
+  private final HeaterViewModel heaterVM;
+  private final HistoryViewModel historyVM;
+  private final GraphViewModel graphViewModel;
 
   public ViewModelFactory(ModelFactory model)
   {
