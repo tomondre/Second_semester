@@ -5,7 +5,7 @@ import model.Heater;
 public class Power3State implements HeaterState
 {
   //Configuring waiting time
-  private final int timerValue = 30000;
+  private final int timerValue = 20000;
 
   private final int POWER = 3;
   private final Thread thread;
