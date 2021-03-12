@@ -59,25 +59,30 @@ public class ServerMain1
               sum += numbers.get(i);
             }
             break;
+
           case '*':
             for (int i = 1; i < numbers.size(); i++)
             {
               sum *= numbers.get(i);
             }
             break;
+
           case '-':
             for (int i = 1; i < numbers.size(); i++)
             {
               sum -= numbers.get(i);
             }
             break;
+
           case '/':
             for (int i = 1; i < numbers.size(); i++)
             {
               sum /= numbers.get(i);
             }
             break;
+
         }
+
         out.println(sum);
         out.println(
             "Write sequence of numbers and operator, divided with ',' ");

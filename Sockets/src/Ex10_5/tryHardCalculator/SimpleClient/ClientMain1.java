@@ -20,6 +20,7 @@ public class ClientMain1
         new InputStreamReader(socket.getInputStream()));
 
     String initMessage = in.readLine();
+
     if (initMessage.equals("connected"))
     {
       System.out.println("Connected successfully");

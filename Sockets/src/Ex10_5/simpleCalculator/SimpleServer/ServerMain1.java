@@ -38,25 +38,29 @@ public class ServerMain1
           out.println("Operation");
           char operation = in.readLine().charAt(0);
 
+          double result = 0;
           switch (operation)
           {
             case '+':
-              out.println("Result is: " + (firstValue + secondValue)
-                  + " Continue? y for yes, n for no");
+              result = firstValue + secondValue;
               break;
+
             case '*':
-              out.println("Result is: " + (firstValue * secondValue)
-                  + " Continue? y for yes, n for no");
+              result = firstValue * secondValue;
               break;
+
             case '-':
-              out.println("Result is: " + (firstValue - secondValue)
-                  + " Continue? y for yes, n for no");
+              result = firstValue - secondValue;
               break;
+
             case '/':
-              out.println("Result is: " + (firstValue / secondValue)
-                  + "\nContinue? y for Yes, n for No");
+              result = firstValue / secondValue;
               break;
           }
+
+          out.println(
+              "Result is: " + result + ", continue? y for Yes, n for No");
+
           char answer = in.readLine().toLowerCase().charAt(0);
 
           if (answer == 'n')
