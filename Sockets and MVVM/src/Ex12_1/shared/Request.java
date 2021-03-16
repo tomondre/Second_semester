@@ -1,21 +1,21 @@
-package Ex11_4;
+package Ex12_1.shared;
 
 import java.io.Serializable;
 
 public class Request implements Serializable
 {
-  private String arg;
+  private Object obj;
   private String requestType;
 
-  public Request(String requestType, String arg)
+  public Request(String requestType, Object obj)
   {
-    this.arg = arg;
+    this.obj = obj;
     this.requestType = requestType;
   }
 
-  public String getArg()
+  public Object getArg()
   {
-    return arg;
+    return obj;
   }
 
   public String getRequestType()

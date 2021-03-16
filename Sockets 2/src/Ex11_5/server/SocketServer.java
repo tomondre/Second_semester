@@ -31,6 +31,5 @@ public class SocketServer
   {
     System.out.println(message.get());
     pool.broadcast(message);
-
   }
 }
