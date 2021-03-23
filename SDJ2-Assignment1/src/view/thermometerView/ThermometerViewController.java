@@ -1,6 +1,6 @@
 package view.thermometerView;
 
-import core.ViewHandler;
+import client.core.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

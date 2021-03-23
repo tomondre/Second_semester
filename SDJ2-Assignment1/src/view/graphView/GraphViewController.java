@@ -1,6 +1,6 @@
 package view.graphView;
 
-import core.ViewHandler;
+import client.core.ViewHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

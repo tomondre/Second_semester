@@ -1,4 +1,4 @@
-package core;
+package client.core;
 
 import view.graphView.GraphViewModel;
 import view.heaterView.HeaterViewModel;

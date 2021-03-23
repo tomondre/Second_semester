@@ -1,6 +1,6 @@
 package view.historyView;
 
-import core.ViewHandler;
+import client.core.ViewHandler;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;

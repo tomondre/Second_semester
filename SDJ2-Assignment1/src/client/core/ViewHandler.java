@@ -1,4 +1,4 @@
-package core;
+package client.core;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

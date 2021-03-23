@@ -1,4 +1,4 @@
-package core;
+package client.core;
 
 import model.HeatingSystem;
 import model.Model;

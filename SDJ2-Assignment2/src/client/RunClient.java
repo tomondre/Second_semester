@@ -1,15 +1,18 @@
+package client;
+
+import client.core.ClientFactory;
 import client.core.ModelFactory;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class HeatingSystemApp extends Application
+public class RunClient extends Application
 {
-  @Override public void start(Stage stage) throws Exception
+  @Override public void start(Stage stage)
   {
-
-    ModelFactory mf = new ModelFactory();
+    ClientFactory client = new ClientFactory();
+    ModelFactory mf = new ModelFactory(client);
     ViewModelFactory vmf = new ViewModelFactory(mf);
     ViewHandler vh = new ViewHandler(vmf);
 

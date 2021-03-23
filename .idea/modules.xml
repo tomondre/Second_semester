@@ -13,6 +13,8 @@
       <module fileurl="file://$PROJECT_DIR$/Sockets and MVVM/Sockets and MVVM.iml" filepath="$PROJECT_DIR$/Sockets and MVVM/Sockets and MVVM.iml" />
       <module fileurl="file://$PROJECT_DIR$/State Pattern/State Pattern.iml" filepath="$PROJECT_DIR$/State Pattern/State Pattern.iml" />
       <module fileurl="file://$PROJECT_DIR$/Thrads2/Thrads2.iml" filepath="$PROJECT_DIR$/Thrads2/Thrads2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Unit Testing.iml" filepath="$PROJECT_DIR$/Unit Testing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SpringFramework/transfering-existing-project-to-spring/transfering-existing-project-to-spring.iml" filepath="$PROJECT_DIR$/../SpringFramework/transfering-existing-project-to-spring/transfering-existing-project-to-spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/MVVM 1/untitled.iml" filepath="$PROJECT_DIR$/MVVM 1/untitled.iml" />
     </modules>
   </component>
