@@ -6,9 +6,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Threads 1/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TimestampWithObserver/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MVVM 1/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="application" />
+    <orderEntry type="library" name="JavaFX" level="application" />
   </component>
 </module>
