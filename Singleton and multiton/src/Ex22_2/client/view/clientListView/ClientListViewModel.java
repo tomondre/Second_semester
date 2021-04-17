@@ -1,5 +1,6 @@
 package Ex22_2.client.view.clientListView;
 
+import Ex22_2.client.core.ModelFactory;
 import Ex22_2.client.model.Model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,9 +16,9 @@ public class ClientListViewModel implements PropertyChangeListener
 
   private Model model;
 
-  public ClientListViewModel(Model model)
+  public ClientListViewModel()
     {
-      this.model = model;
+      this.model = ModelFactory.getInstance().getModel();
       model.addPropertyChangeListener(this);
       clientNames = FXCollections.observableArrayList();
       clientNames.setAll(model.getClientNames());

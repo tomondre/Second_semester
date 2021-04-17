@@ -5,13 +5,13 @@ import Ex22_2.client.model.Model;
 
 public class ModelFactory
 {
-  private ClientFactory clientFactory;
+  private ClientFactory client;
   private Model model;
-  private static ModelFactory modelFactory = new ModelFactory(ClientFactory.getInstance());
+  private static ModelFactory modelFactory = new ModelFactory();
 
-  private ModelFactory(ClientFactory client)
+  private ModelFactory()
   {
-    this.clientFactory = client;
+    this.client = ClientFactory.getInstance();
     model = new ChatModel(client.getClient());
   }
 

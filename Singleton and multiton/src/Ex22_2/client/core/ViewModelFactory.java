@@ -10,14 +10,14 @@ public class ViewModelFactory
   private LoginViewModel loginVM;
   private ClientListViewModel clientListVM;
   private ModelFactory mf;
-  private static ViewModelFactory viewModelFactory = new ViewModelFactory(ModelFactory.getInstance());
+  private static ViewModelFactory viewModelFactory = new ViewModelFactory();
 
-  private ViewModelFactory(ModelFactory model)
+  private ViewModelFactory()
   {
-    mf = model;
-    chatVM = new ChatViewModel(model.getModel());
-    loginVM = new LoginViewModel(model.getModel());
-    clientListVM = new ClientListViewModel(model.getModel());
+    mf = ModelFactory.getInstance();
+    chatVM = new ChatViewModel();
+    loginVM = new LoginViewModel();
+    clientListVM = new ClientListViewModel();
   }
 
   public static ViewModelFactory getInstance()

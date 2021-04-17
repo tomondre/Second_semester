@@ -1,6 +1,5 @@
 package server.core;
 
-import server.model.ServerModel;
 import server.networking.SocketServer;
 
 import java.io.IOException;

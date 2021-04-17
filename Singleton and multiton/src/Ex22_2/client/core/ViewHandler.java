@@ -13,10 +13,11 @@ public class ViewHandler
   private Stage stage;
 
   private ViewModelFactory vmf;
-  private static ViewHandler handler = new ViewHandler(ViewModelFactory.getInstance());
-  private ViewHandler(ViewModelFactory vmf)
+  private static ViewHandler handler = new ViewHandler();
+
+  private ViewHandler()
   {
-    this.vmf = vmf;
+    this.vmf = ViewModelFactory.getInstance();
   }
 
   public void start()
@@ -34,7 +35,7 @@ public class ViewHandler
       Parent root = loader.load();
       ChatController controller = loader.getController();
 
-      controller.init(this, vmf.getChatViewModel());
+      controller.init();
 
       Scene scene = new Scene(root);
 
@@ -57,7 +58,7 @@ public class ViewHandler
       Parent root = loader.load();
       LoginController controller = loader.getController();
 
-      controller.init(vmf.getLoginViewModel(), this);
+      controller.init();
 
       Scene scene = new Scene(root);
 
@@ -81,7 +82,7 @@ public class ViewHandler
       Parent root = loader.load();
       ClientListViewController controller = loader.getController();
 
-      controller.init(this, vmf.getClientListViewModel());
+      controller.init();
 
       Scene scene = new Scene(root);
 
@@ -95,7 +96,8 @@ public class ViewHandler
     }
   }
 
-  public static ViewHandler getInstance(){
+  public static ViewHandler getInstance()
+  {
     return handler;
   }
 }

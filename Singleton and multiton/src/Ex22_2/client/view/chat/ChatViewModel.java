@@ -1,5 +1,6 @@
 package Ex22_2.client.view.chat;
 
+import Ex22_2.client.core.ModelFactory;
 import Ex22_2.client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -18,9 +19,9 @@ public class ChatViewModel implements PropertyChangeListener
 
   private Model model;
 
-  public ChatViewModel(Model model)
+  public ChatViewModel()
   {
-    this.model = model;
+    this.model = ModelFactory.getInstance().getModel();
     model.addPropertyChangeListener(this);
     nameProperty = new SimpleStringProperty();
     messageProperty = new SimpleStringProperty();

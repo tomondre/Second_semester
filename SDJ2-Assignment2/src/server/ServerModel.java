@@ -1,4 +1,4 @@
-package server.model;
+package server;
 
 import shared.Message;
 import shared.PropertyChangeSubject;

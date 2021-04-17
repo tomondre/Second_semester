@@ -1,5 +1,6 @@
 package Ex22_2.client.view.login;
 
+import Ex22_2.client.core.ModelFactory;
 import Ex22_2.client.model.Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -10,9 +11,9 @@ public class LoginViewModel
 private StringProperty nameProperty;
 
 
-  public LoginViewModel(Model model)
+  public LoginViewModel()
   {
-    this.model = model;
+    this.model = ModelFactory.getInstance().getModel();
     nameProperty = new SimpleStringProperty();
   }
 

@@ -1,6 +1,7 @@
 package Ex22_2.client.view.chat;
 
 import Ex22_2.client.core.ViewHandler;
+import Ex22_2.client.core.ViewModelFactory;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -18,13 +19,12 @@ public class ChatController
   public Button showClientsButton;
 
   private ViewHandler handler;
-  private ChatViewModel viewModel;
-  private String name;
+  private ChatViewModel vm;
 
-  public void init(ViewHandler handler, ChatViewModel vm)
+  public void init()
   {
-    this.viewModel = vm;
-    this.handler = handler;
+    this.vm = ViewModelFactory.getInstance().getChatViewModel();
+    this.handler = ViewHandler.getInstance();
 
     nameField.textProperty().bindBidirectional(vm.getNameProperty());
     messageField.textProperty().bindBidirectional(vm.getMessageProperty());
@@ -35,17 +35,17 @@ public class ChatController
 
   public void onSetNameButton(ActionEvent actionEvent)
   {
-   viewModel.setName();
+   vm.setName();
   }
 
   public void onSendMessageButton(ActionEvent actionEvent)
   {
-    viewModel.sendMessage();
+    vm.sendMessage();
   }
 
   public void onNumberOfClientsButton(ActionEvent actionEvent)
   {
-    int numberOfClients = viewModel.getNumberOfConnectedClients();
+    int numberOfClients = vm.getNumberOfConnectedClients();
 
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
     alert.setTitle("Information Dialog");

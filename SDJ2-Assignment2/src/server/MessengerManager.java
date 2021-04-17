@@ -1,7 +1,6 @@
-package server.model;
+package server;
 
 import shared.Message;
-import shared.Request;
 import shared.RequestType;
 
 import java.beans.PropertyChangeListener;

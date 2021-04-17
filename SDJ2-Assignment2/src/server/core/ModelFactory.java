@@ -1,7 +1,7 @@
 package server.core;
 
-import server.model.MessengerManager;
-import server.model.ServerModel;
+import server.MessengerManager;
+import server.ServerModel;
 
 public class ModelFactory
 {

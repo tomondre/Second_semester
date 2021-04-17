@@ -74,7 +74,6 @@ public class ServerSocketHandler implements Runnable, PropertyChangeListener
           case Listener:
             serverModel.addClient(receivedRequest.getArg().toString());
             serverModel.addPropertyChangeListener(this);
-            serverModel.addPropertyChangeListener(this);
             break;
           case ClientList:
             ArrayList<String> list = serverModel.getClientList();

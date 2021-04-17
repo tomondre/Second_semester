@@ -1,6 +1,6 @@
 package server.networking;
 
-import server.model.ServerModel;
+import server.ServerModel;
 import shared.Message;
 import shared.Request;
 import shared.RequestType;

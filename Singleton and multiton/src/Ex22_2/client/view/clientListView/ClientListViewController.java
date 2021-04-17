@@ -1,6 +1,7 @@
 package Ex22_2.client.view.clientListView;
 
 import Ex22_2.client.core.ViewHandler;
+import Ex22_2.client.core.ViewModelFactory;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -16,10 +17,10 @@ public class ClientListViewController
   private ViewHandler handler;
   private ClientListViewModel viewModel;
 
-  public void init(ViewHandler handler, ClientListViewModel viewModel)
+  public void init()
   {
-    this.handler = handler;
-    this.viewModel = viewModel;
+    this.handler = ViewHandler.getInstance();
+    this.viewModel = ViewModelFactory.getInstance().getClientListViewModel();
     clientListColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
     clientListTable.setItems(viewModel.getClientList());
   }
